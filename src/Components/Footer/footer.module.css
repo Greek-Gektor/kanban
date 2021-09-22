@@ -1,0 +1,16 @@
+
+.footer {
+    background: #0067A3;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+span{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #FFFFFF;
+}
