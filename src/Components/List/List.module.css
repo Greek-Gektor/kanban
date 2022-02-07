@@ -1,0 +1,38 @@
+.list{
+    background-color: #EBECF0;
+    width: 282px;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 197px;
+}
+.title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.task{
+    background-color: white;
+    margin: 15px auto;
+    border-radius: 5px;
+    padding: 7px;
+}
+
+.addButton{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    border: transparent;
+    color: #5E6C84;
+    cursor: pointer;
+}
+
+.addButton:hover{
+color: black;
+}

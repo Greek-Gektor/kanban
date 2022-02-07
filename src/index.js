@@ -1,7 +1,8 @@
-import React from 'react';
+
 import './index.css';
-import {reRender} from "./render";
-import state from "./State/State";
+
+import ReactDOM from "react-dom";
+import App from "./App";
 
 
 
@@ -9,4 +10,9 @@ import state from "./State/State";
 
 
 
-reRender(state);
+ReactDOM.render(<App  />,document.getElementById('root')
+);
+
+
+
+

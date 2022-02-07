@@ -1,40 +1,59 @@
 import React from 'react';
 import s from './TypeOfTasks.module.css';
 import Task from "../Task/Task";
-import {reRender} from "../../index";
+import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 
-class TypeOfTasks extends React.Component {
-    constructor(props) {
-        super(props);
-    }
+function TypeOfTasks(props) {
 
-    render() {
+    const {tasks, setTasks} = props
 
-        let newTaskName = React.createRef();
-
-        let addTusk = () => {
-            if(newTaskName.current.value !=='') {
-                let tuskName = newTaskName.current.value;
-                this.props.addTusk(tuskName);
-                newTaskName.current.value=''}
+    const addNewTask = (title, description) => {
+        const task = {
+            id: generateUniqueID(),
+            title,
+            description,
+            time: new Date().toISOString(),
+            type: "backlog"
 
         }
-
-        let tasksElements = this.props.state.backLog.tasks
-            .map(task => <Task name={task.name}/> )
-
-        return (
-            <div className={s.typeOfTasks}>
-                <span className={s.title}>{this.props.state.backLog.title}</span>
-                {tasksElements}
-                <input className={this.props.state.backLog.inputStyle.showInput}
-                       ref={newTaskName}
-                       type="text"/>
-                <button className={s.button} onClick={addTusk}>Add card</button>
-            </div>
-        );
+        setTasks([...tasks, task])
     }
+
+    let newTaskName = React.createRef();
+
+
+    function showInput() {
+        if (props.state.backLog.inputStyle.showInput) {
+            return s.input
+        } else {
+            return s.inputRemove
+        }
+    }
+
+
+    let tasksElements = props.state.backLog.tasks
+        .map(task => <Task name={task.name}/>)
+
+    return (
+        <div className={s.typeOfTasks}>
+            <span className={s.title}>{props.state.backLog.title}</span>
+            {tasksElements}
+
+            <input className={showInput()}
+                   ref={newTaskName}
+                   type="text"/>
+            <button className={s.button} onClick={() => {
+                props.setCount(
+                    props.state.backLog.tasks.push({
+                        id: `${'task' + (props.state.backLog.tasks.length + 1)}`,
+                        name: newTaskName.current.value
+                    })
+                )
+            }}>Add card
+            </button>
+        </div>
+    );
 }
 
 
