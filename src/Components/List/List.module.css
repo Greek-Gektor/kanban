@@ -23,6 +23,8 @@
 }
 
 .addButton{
+    width: 100px;
+    height: 25px;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -31,8 +33,11 @@
     border: transparent;
     color: #5E6C84;
     cursor: pointer;
+    background-color: white;
+    border-radius: 8px;
 }
 
 .addButton:hover{
 color: black;
+    background-color: #0079BF;
 }

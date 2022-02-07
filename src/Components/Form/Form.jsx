@@ -19,17 +19,22 @@ const Form = (props) => {
     }
 
     const handleSubmit = e => {
-    e.preventDefault()
-        if(values.title){
-    formSubmit(values.title, values.description)
+        e.preventDefault()
+        if (values.title) {
+            formSubmit(values.title, values.description)
         }
     }
 
     return (
         <form onSubmit={handleSubmit} className={s.form}>
-            <input className={s.input} id='taskTitle' name='title' type='text' placeholder='Enter task title' onChange={handleChange} value={values.title} />
-            <textarea className={clsx(s.input, s.textarea)} id='taskDescription' name='description' placeholder='Enter task description' value={values.description} onChange={handleChange} />
-            <button className={s.submit} type='submit'>Add tusk</button>
+            <button className={s.submit} type='submit'>Submit</button>
+
+            <div className={s.area}>
+                <input className={s.input} id='taskTitle' name='title' type='text' placeholder='Enter task title'
+                        onChange={handleChange} value={values.title}/>
+                <textarea className={clsx(s.input, s.textarea)} id='taskDescription' name='description'
+                          placeholder='Enter task description' value={values.description} onChange={handleChange}/>
+            </div>
         </form>
     );
 }

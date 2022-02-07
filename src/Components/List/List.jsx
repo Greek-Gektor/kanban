@@ -6,7 +6,7 @@ import Form from "../Form/Form";
 
 const List = (props) => {
 
-    const {type, title, tasks,addNewTask} = props
+    const {type, title, tasks, addNewTask} = props
 
     const [isFormVisible, setFormVisible] = useState(false)
 
@@ -15,6 +15,12 @@ const List = (props) => {
     const formSubmit = (title, description) => {
         addNewTask(title, description)
         setFormVisible(false)
+        setAddButtonVisible(true)
+    }
+
+    const handleAddNewTask = () => {
+        setFormVisible(!isFormVisible)
+        setAddButtonVisible(false)
     }
 
     return (
@@ -25,8 +31,9 @@ const List = (props) => {
                     <div className={s.task}>{task.title}</div>
                 ) :
                 <p className={s.task}>No tasks added yet</p>}
-            {type === LIST_TYPES.BACKLOG && isAddButtonVisible && <button className={s.addButton}>+ Add card</button>}
-            {type === LIST_TYPES.BACKLOG && isFormVisible && (<Form formSubmit={formSubmit}/>)}
+            {type === LIST_TYPES.BACKLOG && isAddButtonVisible &&
+            <button onClick={handleAddNewTask} className={s.addButton}>+ Add card</button>}
+            {type === LIST_TYPES.BACKLOG && isFormVisible && (<Form setAddButtonVisible={setAddButtonVisible} formSubmit={formSubmit}/>)}
 
             {type === LIST_TYPES.READY && <button className={s.addButton}>+ Add card</button>}
             {type === LIST_TYPES.IN_PROGRESS && <button className={s.addButton}>+ Add card</button>}

@@ -1,5 +1,8 @@
 .form {
     margin-top: 15px;
+}
+
+.area{
     display: flex;
     flex-direction: column;
 }
@@ -18,16 +21,24 @@
 }
 
 .submit {
-    background: #465671;
-    color: #fff;
+    margin: 0 0 15px 0;
+    width: 100px;
+    height: 25px;
     border: none;
     border-radius: 8px;
-    padding: 8px 0;
-    width: 50px;
     cursor: pointer;
-    align-self: flex-end;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    border: transparent;
+    color: #5E6C84;
+    background-color: white;
+
 }
 
 .submit:hover {
-    background: #5d7194;
+    color: black;
+    background-color: #0079BF;
 }
