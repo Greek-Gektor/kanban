@@ -38,6 +38,15 @@
 }
 
 .addButton:hover{
-color: black;
+    color: black;
     background-color: #0079BF;
+}
+
+.select{
+    width: 253px;
+    height: 35px;
+    background-color: white;
+    margin: 15px auto;
+    border-radius: 5px;
+    padding: 7px;
 }

@@ -31,7 +31,7 @@ const Form = (props) => {
 
             <div className={s.area}>
                 <input className={s.input} id='taskTitle' name='title' type='text' placeholder='Enter task title'
-                        onChange={handleChange} value={values.title}/>
+                       onChange={handleChange} value={values.title}/>
                 <textarea className={clsx(s.input, s.textarea)} id='taskDescription' name='description'
                           placeholder='Enter task description' value={values.description} onChange={handleChange}/>
             </div>

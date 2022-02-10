@@ -6,7 +6,7 @@ import List from "../List/List";
 
 
 const Board = (props) => {
-const {tasks, setTasks}= props
+    const {tasks, setTasks}= props
 
     const addNewTask = (title, description) => {
         const task = {
@@ -29,8 +29,10 @@ const {tasks, setTasks}= props
                             key={LIST_COPY[type]}
                             type={type}
                             title={LIST_COPY[type]}
-                            tasks={listTasks || []}
+                            personalTasks={listTasks || []}
                             addNewTask={addNewTask}
+                            allTasks={tasks}
+                            setTasks={setTasks}
                         />
                     )
                 })
