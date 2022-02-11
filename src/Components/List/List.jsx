@@ -11,12 +11,29 @@ const List = (props) => {
 
 
 
-
     const [isFormVisible, setFormVisible] = useState(false)
     const [isAddButtonVisible, setAddButtonVisible] = useState(true)
 
     const [isReadyButtonVisible, setReadyButtonVisible] = useState(true)
     const [isReadyListVisible, setReadyListVisible] = useState(false)
+
+    const handleReadyNewTask = () => {
+        setReadyListVisible(!isReadyListVisible)
+        setReadyButtonVisible(false)
+    }
+
+/*    let i = 0
+    let readyButton;
+
+    for(i;i<allTasks.length;i++){
+        if (allTasks[i].status === LIST_TYPES.BACKLOG ) {
+            readyButton = <button onClick={handleReadyNewTask} className={s.addButton}>+ Add card</button>;
+            break;
+        } else {
+            readyButton = <button className={s.addButton}>+ Add card</button>;
+        }
+    }*/
+
 
     const readyHandleChange = (e) => {
 
@@ -42,10 +59,6 @@ const List = (props) => {
         setAddButtonVisible(false)
     }
 
-    const handleReadyNewTask = () => {
-        setReadyListVisible(!isReadyListVisible)
-        setReadyButtonVisible(false)
-    }
 
     return (
         <div className={s.list}>
@@ -61,7 +74,9 @@ const List = (props) => {
                 <Form setAddButtonVisible={setAddButtonVisible} formSubmit={formSubmit}/>)}
 
             {type === LIST_TYPES.READY && isReadyButtonVisible &&
-            <button onClick={handleReadyNewTask} className={s.addButton}>+ Add card</button>}
+            /*{readyButton}*/
+                 <button onClick={handleReadyNewTask} className={s.addButton}>+ Add card</button>
+            }
             {type === LIST_TYPES.READY && isReadyListVisible &&
             <select className={s.select} onChange={readyHandleChange} >
                 <option selected="selected"> </option>
