@@ -32,6 +32,6 @@
 			"title": "Implement loader",
 			"description": "Fetching data from server takes some time. We need to implement a loader so user can see that data fetching is in progress.",
 			"created": "2021-09-27T11:16:47.091Z",
-			"status": "done"
+			"status": "finished"
 	}
 ]

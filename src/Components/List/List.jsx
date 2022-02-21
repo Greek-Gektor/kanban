@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {useState} from 'react'
 import s from './List.module.css'
@@ -8,6 +7,12 @@ import Form from "../Form/Form";
 const List = (props) => {
 
     const {type, title, personalTasks, addNewTask, allTasks, setTasks} = props
+
+
+    const backlogTasks = allTasks.filter(task => task.status === "backlog");
+    const readyTasks = allTasks.filter(task => task.status === "ready");
+    const inProgressTasks = allTasks.filter(task => task.status === "inProgress");
+
 
 
 
@@ -22,17 +27,21 @@ const List = (props) => {
         setReadyButtonVisible(false)
     }
 
-/*    let i = 0
-    let readyButton;
+    const [isInProgressButtonVisible, setInProgressButtonVisible] = useState(true)
+    const [isInProgressListVisible, setInProgressListVisible] = useState(false)
 
-    for(i;i<allTasks.length;i++){
-        if (allTasks[i].status === LIST_TYPES.BACKLOG ) {
-            readyButton = <button onClick={handleReadyNewTask} className={s.addButton}>+ Add card</button>;
-            break;
-        } else {
-            readyButton = <button className={s.addButton}>+ Add card</button>;
-        }
-    }*/
+    const handleInProgressNewTask = () => {
+        setInProgressListVisible(!isInProgressListVisible)
+        setInProgressButtonVisible(false)
+    }
+
+    const [isFinishedButtonVisible, setFinishedButtonVisible] = useState(true)
+    const [isFinishedListVisible, setFinishedListVisible] = useState(false)
+
+    const handleFinishedNewTask = () => {
+        setFinishedListVisible(!isInProgressListVisible)
+        setFinishedButtonVisible(false)
+    }
 
 
     const readyHandleChange = (e) => {
@@ -47,6 +56,34 @@ const List = (props) => {
         setReadyListVisible(false)
         setReadyButtonVisible(true)
     }
+
+    const inProgressHandleChange = (e) => {
+
+        const updatedTasks = allTasks.map(task => {
+            if (e.target.value === task.id) {
+                return {...task, status: 'inProgress'}
+            }
+            return task
+        })
+        setTasks(updatedTasks)
+        setInProgressListVisible(false)
+        setInProgressButtonVisible(true)
+
+    }
+
+    const finishedHandleChange = (e) => {
+
+        const updatedTasks = allTasks.map(task => {
+            if (e.target.value === task.id) {
+                return {...task, status: 'finished'}
+            }
+            return task
+        })
+        setTasks(updatedTasks)
+        setFinishedListVisible(false)
+        setFinishedButtonVisible(true)
+    }
+
 
     const formSubmit = (title, description) => {
         addNewTask(title, description)
@@ -74,12 +111,15 @@ const List = (props) => {
                 <Form setAddButtonVisible={setAddButtonVisible} formSubmit={formSubmit}/>)}
 
             {type === LIST_TYPES.READY && isReadyButtonVisible &&
-            /*{readyButton}*/
-                 <button onClick={handleReadyNewTask} className={s.addButton}>+ Add card</button>
+            (backlogTasks.length !== 0 ?
+                <button onClick={handleReadyNewTask} className={s.addButton}>+ Add card</button> :
+                <button className={s.inactiveButton}>+ Add card</button>)
             }
+
+
             {type === LIST_TYPES.READY && isReadyListVisible &&
-            <select className={s.select} onChange={readyHandleChange} >
-                <option selected="selected"> </option>
+            <select className={s.select} onChange={readyHandleChange}>
+                <option selected="selected"></option>
                 {allTasks.map(task => {
                     if (task.status === LIST_TYPES.BACKLOG) {
                         return <option value={task.id} id={task.id}>{task.title}</option>
@@ -87,8 +127,42 @@ const List = (props) => {
                 })}
             </select>}
 
-            {type === LIST_TYPES.IN_PROGRESS && <button className={s.addButton}>+ Add card</button>}
-            {type === LIST_TYPES.FINISHED && <button className={s.addButton}>+ Add card</button>}
+
+            {type === LIST_TYPES.IN_PROGRESS && isInProgressButtonVisible &&
+            (readyTasks.length !== 0 ?
+                <button onClick={handleInProgressNewTask} className={s.addButton}>+ Add card</button> :
+                <button className={s.inactiveButton}>+ Add card</button>)
+            }
+
+            {
+                type === LIST_TYPES.IN_PROGRESS && isInProgressListVisible &&
+                <select className={s.select} onChange={inProgressHandleChange}>
+                    <option selected="selected"></option>
+                    {allTasks.map(task => {
+                        if (task.status === LIST_TYPES.READY) {
+                            return <option value={task.id} id={task.id}>{task.title}</option>
+                        }
+                    })}
+                </select>
+            }
+
+
+            {type === LIST_TYPES.FINISHED && isFinishedButtonVisible &&
+            (inProgressTasks.length !== 0 ?
+                <button onClick={handleFinishedNewTask} className={s.addButton}>+ Add card</button> :
+                <button className={s.inactiveButton}>+ Add card</button>)}
+
+            {type === LIST_TYPES.FINISHED && isFinishedListVisible &&
+            <select className={s.select} onChange={finishedHandleChange}>
+                <option selected="selected"></option>
+                {allTasks.map(task => {
+                    if (task.status === LIST_TYPES.IN_PROGRESS) {
+                        return <option value={task.id} id={task.id}>{task.title}</option>
+                    }
+                })}
+            </select>
+            }
+
 
         </div>
     );
