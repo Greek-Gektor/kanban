@@ -28,7 +28,7 @@ function TaskDetails(props) {
         e.preventDefault()
         const updatedTasks = tasks.map(task => {
             if (taskId === task.id) {
-                return {...task, description: 'descriptionValue'}
+                return {...task, description: descriptionValue}
             }
             return task
         })
