@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './TypeOfTasks.module.css';
-import Task from "../Task/Task";
+import TaskDetails from "../TaskDetails/TaskDetails";
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 
@@ -33,7 +33,7 @@ function TypeOfTasks(props) {
 
 
     let tasksElements = props.state.backLog.tasks
-        .map(task => <Task name={task.name}/>)
+        .map(task => <TaskDetails name={task.name}/>)
 
     return (
         <div className={s.typeOfTasks}>

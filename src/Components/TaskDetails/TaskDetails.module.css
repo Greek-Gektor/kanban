@@ -1,0 +1,52 @@
+
+.tdWrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 1181px;
+    height: 548px;
+    background: #FFFFFF;
+}
+
+.tdTask{
+    padding: 6px;
+    border-radius: 5px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.tdTitle{
+    margin: 22px 0 0 28px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+}
+
+.tdParagraf{
+    margin: 35px 0 0 30px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+}
+
+.tdBack {
+    margin: 17px 23px 0 0;
+    background: #FFFFFF;
+    color: black;
+    border: transparent;
+    width: 20px;
+    height: 20px;
+}
+
+.tdLink{
+    text-decoration: none;
+}

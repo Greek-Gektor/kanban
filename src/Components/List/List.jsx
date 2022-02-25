@@ -3,6 +3,7 @@ import {useState} from 'react'
 import s from './List.module.css'
 import {LIST_TYPES} from "../../config";
 import Form from "../Form/Form";
+import { Link } from 'react-router-dom'
 
 const List = (props) => {
 
@@ -68,7 +69,6 @@ const List = (props) => {
         setTasks(updatedTasks)
         setInProgressListVisible(false)
         setInProgressButtonVisible(true)
-
     }
 
     const finishedHandleChange = (e) => {
@@ -102,7 +102,10 @@ const List = (props) => {
             <h2 className={s.title}>{title}</h2>
             {personalTasks.length ?
                 personalTasks.map(task =>
-                    <div className={s.task}>{task.title}</div>
+                    <Link to={`/tasks/${task.id}`} key={task.id} className={s.taskLink}>
+                        <div className={s.task}>{task.title}</div>
+                    </Link>
+
                 ) :
                 <p className={s.task}>No tasks added yet</p>}
             {type === LIST_TYPES.BACKLOG && isAddButtonVisible &&
@@ -122,7 +125,7 @@ const List = (props) => {
                 <option selected="selected"></option>
                 {allTasks.map(task => {
                     if (task.status === LIST_TYPES.BACKLOG) {
-                        return <option value={task.id} id={task.id}>{task.title}</option>
+                        return <option value={task.id} key={task.id} id={task.id}>{task.title}</option>
                     }
                 })}
             </select>}
@@ -140,7 +143,7 @@ const List = (props) => {
                     <option selected="selected"></option>
                     {allTasks.map(task => {
                         if (task.status === LIST_TYPES.READY) {
-                            return <option value={task.id} id={task.id}>{task.title}</option>
+                            return <option value={task.id} key={task.id} id={task.id}>{task.title}</option>
                         }
                     })}
                 </select>
@@ -157,7 +160,7 @@ const List = (props) => {
                 <option selected="selected"></option>
                 {allTasks.map(task => {
                     if (task.status === LIST_TYPES.IN_PROGRESS) {
-                        return <option value={task.id} id={task.id}>{task.title}</option>
+                        return <option value={task.id} key={task.id} id={task.id}>{task.title}</option>
                     }
                 })}
             </select>
