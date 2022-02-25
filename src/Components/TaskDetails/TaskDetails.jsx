@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react'
 import {useRouteMatch, Link} from 'react-router-dom'
 import s from './TaskDetails.module.css';
+import clsx from "clsx";
 
 
 function TaskDetails(props) {
@@ -17,19 +18,8 @@ function TaskDetails(props) {
     const [descriptionValue, setDescriptionValue] = useState(task.description)
 
 
-    /*    const descriptionHandleChange = (e) => {
 
-            const updatedTasks = allTasks.map(task => {
-                if (taskId === task.id) {
-                    return {...task, description: e.target.value}
-                }
-                return task
-            })
-            setTasks(updatedTasks)
-
-        }*/
-
-    const mzfk = () => {
+    const buttonSwitch = () => {
         setEditButtonVisible(false)
         setSubmitButtonVisible(true)
     }
@@ -47,8 +37,12 @@ function TaskDetails(props) {
         setEditButtonVisible(true)
     }
 
-    const handleChange = e => {
+  /*  const handleChange = e => {
         setDescriptionValue({...descriptionValue, descriptionValue: e.target.value})
+    }*/
+
+    const handleChange = e => {
+        setDescriptionValue(e.target.value)
     }
 
     return (
@@ -59,7 +53,7 @@ function TaskDetails(props) {
                 {isEditButtonVisible &&
                 <>
                     <p className={s.tdParagraf}>{descriptionValue || "This task has no description"}</p>
-                    <button onClick={mzfk}>Edit description</button>
+                    <button onClick={buttonSwitch}>Edit description</button>
                 </>
                 }
                 {isSubmitButtonVisible &&
