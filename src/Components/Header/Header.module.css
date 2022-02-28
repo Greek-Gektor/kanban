@@ -1,0 +1,54 @@
+
+.header {
+    background: #0067A3;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.title {
+    margin: 0 0 0 20px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 28px;
+    line-height: 33px;
+    color: #FFFFFF;
+}
+.profileWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.profilePhotoWrapper {
+    display: flex;
+    margin: 0 16px 0 0;
+}
+
+.buttonDown {
+    background: #0067A3;
+    border: transparent;
+}
+
+.buttonUp {
+    background: #0067A3;
+    border: transparent;
+}
+
+.img {
+    border-radius: 50%;
+}
+
+.rhombImg{
+    transform: rotate(45deg);
+}
+
+.profileTextWrapper{
+
+}
+
+.profileText{
+    background-color: #FFFFFF;
+}

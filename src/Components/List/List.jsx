@@ -134,7 +134,7 @@ const List = (props) => {
             {type === LIST_TYPES.IN_PROGRESS && isInProgressButtonVisible &&
             (readyTasks.length !== 0 ?
                 <button onClick={handleInProgressNewTask} className={s.addButton}>+ Add card</button> :
-                <button className={s.inactiveButton}>+ Add card</button>)
+                <button className={s.inactiveButton} >+ Add card</button>)
             }
 
             {

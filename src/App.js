@@ -4,6 +4,8 @@ import {BrowserRouter} from 'react-router-dom'
 
 import data from "./mock.json"
 import Main from "./Components/Main/main";
+import Footer from "./Components/Footer/Footer";
+import Header from "./Components/Header/Header";
 
 
 
@@ -16,13 +18,10 @@ const [tasks , setTasks]= useState(data)
 
         <div className={s.wrapper}>
             <BrowserRouter>
-                {/*<Header/>*/}
+                <Header/>
                 <Main tasks={tasks} setTasks={setTasks}/>
-                {/*<Footer/>*/}
+                <Footer tasks={tasks}/>
 
-            {/*<Header/>*/}
-            {/*<Main tasks={tasks} setTasks={setTasks}/>*/}
-            {/*<Footer/>*/}
             </BrowserRouter>
         </div>
     );

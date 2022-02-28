@@ -8,8 +8,7 @@ import TaskDetails from "../TaskDetails/TaskDetails";
 const Main = (props) => {
     return (
         <main className={s.main}>
-            {/*<Board {...props} />*/}
-            {/*<TaskDetail {...props} />*/}
+
             <Switch>
                 <Route exact path={'/'}>
                     <Board {...props} />

@@ -37,9 +37,6 @@ function TaskDetails(props) {
         setEditButtonVisible(true)
     }
 
-  /*  const handleChange = e => {
-        setDescriptionValue({...descriptionValue, descriptionValue: e.target.value})
-    }*/
 
     const handleChange = e => {
         setDescriptionValue(e.target.value)
@@ -53,13 +50,13 @@ function TaskDetails(props) {
                 {isEditButtonVisible &&
                 <>
                     <p className={s.tdParagraf}>{descriptionValue || "This task has no description"}</p>
-                    <button onClick={buttonSwitch}>Edit description</button>
+                    <button className={s.tdEditButton} onClick={buttonSwitch}>Edit description</button>
                 </>
                 }
                 {isSubmitButtonVisible &&
-                <form onSubmit={handleSubmit}>
-                    <textarea name="tdd" id="tdd" onChange={handleChange}>{descriptionValue}</textarea>
-                    <button type='submit'>Submit</button>
+                <form className={s.tdForm} onSubmit={handleSubmit}>
+                    <textarea className={s.tdTextarea} name="tdd" id="tdd" onChange={handleChange}>{descriptionValue}</textarea>
+                    <button className={s.tdSubmitButton} type='submit'>Submit</button>
                 </form>
 
                 }
