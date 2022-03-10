@@ -12,7 +12,16 @@ import Header from "./Components/Header/Header";
 
 
 function App() {
-const [tasks , setTasks]= useState(data)
+
+    const initialState = JSON.parse(window.localStorage.getItem('tasks')) || []
+    const [tasks, setTasks] = useState(initialState)
+
+    useEffect(() => {
+        window.localStorage.setItem('tasks', JSON.stringify(tasks))
+    }, [tasks])
+
+
+ /*const [tasks , setTasks]= useState(data)*/
 
     return (
 
