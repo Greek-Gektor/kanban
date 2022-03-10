@@ -39,13 +39,16 @@ function Header() {
                 </div>
 
                 {!isProfileVisible &&
+                    <>
+                <img className={s.rhombImg} src={Rhomb} alt=""/>
                 <div className={s.profileTextWrapper}>
-                    <img className={s.rhombImg} src={Rhomb} alt=""/>
                     <div className={s.profileText}>
                         <p>Profile</p>
                         <p>log Out</p>
                     </div>
-                </div>}
+                </div>
+                    </>}
+
 
             </div>
         </div>
