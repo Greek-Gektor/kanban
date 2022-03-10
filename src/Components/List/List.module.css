@@ -1,11 +1,11 @@
 .list{
     background-color: #EBECF0;
     width: 282px;
-    max-height:50%;
+    max-height: 300px;
     margin: 10px;
     padding: 15px;
     border-radius: 10px;
-    overflow: auto;
+    overflow-y:auto
 
 }
 .title{
@@ -69,7 +69,7 @@
 
 
 .select{
-    width: 253px;
+    width: 240px;
     height: 35px;
     background-color: white;
     margin: 15px auto;
